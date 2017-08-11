@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
 import Index from '@/components/index'
 import Join from '@/components/join'
+import Room from '@/components/room'
 
 Vue.use(Router)
 
@@ -10,18 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
-    },
-    {
-      path: '/index',
-      name: 'Byebye',
+      name: 'index',
       component: Index
     },
     {
       path: '/join',
-      name: 'Byebye',
+      name: 'join',
       component: Join
+    },
+    {
+      path: '/room/:id',
+      name: 'room',
+      component: Room
     }
   ]
 })

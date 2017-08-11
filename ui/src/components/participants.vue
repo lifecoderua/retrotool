@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <h3>I am a card</h3>
+  <div id="participants">
+
   </div>
 </template>
 
