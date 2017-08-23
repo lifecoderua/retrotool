@@ -4,15 +4,25 @@
     <card></card>
     <card></card>
     <card></card>
+    {{ allCards }}
   </div>
 </template>
 
 <script>
   import Card from '@/components/card'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'room',
     components: { Card },
+    mounted() {
+      this.getCards()
+    },
+    computed: {
+      ...mapGetters([
+        'allCards'
+      ])
+    },
     props: {
       user: {
         default: () => {
@@ -24,10 +34,13 @@
       }
     },
     methods: {
-      join () {
+      join() {
         console.log('Join for', this.user)
         this.$router.push({ name: 'room', id: 0 })
-      }
+      },
+      ...mapActions([
+        'getCards',
+      ])
     }
   }
 </script>
