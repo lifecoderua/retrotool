@@ -1,10 +1,7 @@
 <template>
   <div id="room">
     <h2>Welcome to Retro {{ $route.params.id }}</h2>
-    <card></card>
-    <card></card>
-    <card></card>
-    {{ allCards }}
+    <card v-for="card in allCards" :card="card" :key="card.id"></card>
   </div>
 </template>
 
