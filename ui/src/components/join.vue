@@ -22,7 +22,7 @@
       }
     },
     methods: {
-      join () {
+      join() {
         console.log('Join for', this.user)
         this.$router.push({ name: 'room', params: { id: 0 } })
       }

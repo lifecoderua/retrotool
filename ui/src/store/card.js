@@ -1,13 +1,4 @@
-// TODO: API - to move out
-function getCardsApi() {
-  return new Promise(function(resolve, reject) {
-    resolve([
-      { title: 'Card one' },
-      { title: 'Card two' },
-      { title: 'Card 3ree' },
-    ])
-  })
-}
+import Card from '@/api/card'
 
 
 const state = {
@@ -17,7 +8,7 @@ const state = {
 
 const actions = {
   init({commit}) {
-    getCardsApi().then((cards) => commit('set_cards', cards))
+    Card.all().then((cards) => commit('set_cards', cards))
   }
 }
 
