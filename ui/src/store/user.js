@@ -6,6 +6,9 @@ const state = {
 }
 
 const actions = {
+  auth({commit}, user) {
+    console.log('AUTH:', user)
+  },
   currentUser({commit}) {
     User.currentUser().then((user) => commit('set_current_user', user))
   }

@@ -9,6 +9,8 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
+
   export default {
     name: 'join',
     props: {
@@ -23,9 +25,13 @@
     },
     methods: {
       join() {
+        this.auth(this.user)
         console.log('Join for', this.user)
         this.$router.push({ name: 'room', params: { id: 0 } })
-      }
+      },
+      ...mapActions('user', [
+        'auth'
+      ])
     }
   }
 </script>
