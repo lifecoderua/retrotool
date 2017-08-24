@@ -16,7 +16,7 @@ const state = {
 }
 
 const actions = {
-  getCards({commit}) {
+  init({commit}) {
     getCardsApi().then((cards) => commit('set_cards', cards))
   }
 }
@@ -34,6 +34,7 @@ const getters = {
 }
 
 export default {
+  namespaced: true,
   state,
   actions,
   mutations,

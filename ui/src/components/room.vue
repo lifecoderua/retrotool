@@ -16,10 +16,10 @@
     name: 'room',
     components: { Card },
     mounted() {
-      this.getCards()
+      this.init()
     },
     computed: {
-      ...mapGetters([
+      ...mapGetters('card', [
         'allCards'
       ])
     },
@@ -27,7 +27,7 @@
       user: {
         default: () => {
           return {
-            name: ' qwess',
+            name: 'qwess',
             email: ''
           }
         }
@@ -38,8 +38,8 @@
         console.log('Join for', this.user)
         this.$router.push({ name: 'room', id: 0 })
       },
-      ...mapActions([
-        'getCards',
+      ...mapActions('card', [
+        'init',
       ])
     }
   }
