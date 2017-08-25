@@ -20,21 +20,7 @@
         'allCards'
       ])
     },
-    props: {
-      user: {
-        default: () => {
-          return {
-            name: 'qwess',
-            email: ''
-          }
-        }
-      }
-    },
     methods: {
-      join() {
-        console.log('Join for', this.user)
-        this.$router.push({ name: 'room', id: 0 })
-      },
       ...mapActions('card', [
         'init',
       ])
