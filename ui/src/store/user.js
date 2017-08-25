@@ -7,7 +7,7 @@ const state = {
 
 const actions = {
   auth({commit}, user) {
-    console.log('AUTH:', user)
+    return User.auth(user)
   },
   currentUser({commit}) {
     User.currentUser().then((user) => commit('set_current_user', user))

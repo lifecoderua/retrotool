@@ -25,9 +25,10 @@
     },
     methods: {
       join() {
-        this.auth(this.user)
-        console.log('Join for', this.user)
-        this.$router.push({ name: 'room', params: { id: 0 } })
+        this.auth(this.user).then((authorizedUser) => {
+          console.log('Join for', authorizedUser)
+          this.$router.push({ name: 'room', params: { id: 0 } })
+        })
       },
       ...mapActions('user', [
         'auth'
