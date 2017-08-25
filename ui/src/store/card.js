@@ -2,8 +2,7 @@ import Card from '@/api/card'
 
 
 const state = {
-  cards: [],
-  lastCheckout: null
+  cards: []
 }
 
 const actions = {
