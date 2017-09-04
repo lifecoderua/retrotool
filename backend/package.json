@@ -1,0 +1,16 @@
+{
+  "name": "retrotool-server",
+  "version": "1.0.0",
+  "description": "Retrospective toolkit server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lifecoder.ua",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.2.31",
+    "ws": "^3.1.0"
+  }
+}
