@@ -1,6 +1,8 @@
 <template>
   <div id="room">
     <h2>Welcome to Retro {{ $route.params.id }}</h2>
+
+    <cluster v-for="cluster in orderedClusters" :cluster="cluster" :key="cluster.id"></cluster>
     <card v-for="card in allCards" :card="card" :key="card.id"></card>
     {{ orderedClusters }}
     <hr>
@@ -9,11 +11,12 @@
 
 <script>
   import Card from '@/components/card'
+  import Cluster from '@/components/cluster'
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'room',
-    components: { Card },
+    components: { Card, Cluster },
     mounted() {
       this.initClusters()
       this.initCards()
