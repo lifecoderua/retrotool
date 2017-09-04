@@ -2,6 +2,8 @@
   <div id="room">
     <h2>Welcome to Retro {{ $route.params.id }}</h2>
     <card v-for="card in allCards" :card="card" :key="card.id"></card>
+    {{ orderedClusters }}
+    <hr>
   </div>
 </template>
 
@@ -13,17 +15,24 @@
     name: 'room',
     components: { Card },
     mounted() {
-      this.init()
+      this.initClusters()
+      this.initCards()
     },
     computed: {
       ...mapGetters('card', [
         'allCards'
-      ])
+      ]),
+      ...mapGetters('cluster', [
+        'orderedClusters'
+      ]),
     },
     methods: {
       ...mapActions('card', [
-        'init',
-      ])
+        'initCards',
+      ]),
+      ...mapActions('cluster', [
+        'initClusters',
+      ]),
     }
   }
 </script>

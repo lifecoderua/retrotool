@@ -6,7 +6,7 @@ const state = {
 }
 
 const actions = {
-  init({commit}) {
+  initCards({commit}) {
     Card.all().then((cards) => commit('set_cards', cards))
   }
 }
