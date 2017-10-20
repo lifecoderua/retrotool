@@ -16,7 +16,6 @@ function Resource(type) {
   }
 
   function init() {
-    console.log(Stubs, type)
     return Stubs[type].reduce((obj, item) => {
       obj[item.id] = item
       return obj

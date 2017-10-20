@@ -2,28 +2,30 @@
   <div id="room">
     <h2>Welcome to Retro {{ $route.params.id }}</h2>
 
-    <cluster v-for="cluster in orderedClusters" :cluster="cluster" :key="cluster.id"></cluster>
-    <card v-for="card in allCards" :card="card" :key="card.id"></card>
-    {{ orderedClusters }}
+    <cluster v-for="cluster in orderedClusters"
+      :cluster="cluster"
+      :cards="allCards"
+      :clustered-card-ids="clusteredCardIds(cluster.id)"
+      :key="cluster.id"></cluster>
     <hr>
   </div>
 </template>
 
 <script>
-  import Card from '@/components/card'
   import Cluster from '@/components/cluster'
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'room',
-    components: { Card, Cluster },
+    components: { Cluster },
     mounted() {
       this.initClusters()
       this.initCards()
     },
     computed: {
       ...mapGetters('card', [
-        'allCards'
+        'allCards',
+        'clusteredCardIds'
       ]),
       ...mapGetters('cluster', [
         'orderedClusters'

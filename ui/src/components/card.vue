@@ -12,5 +12,11 @@
 </script>
 
 <style scoped>
-
+  .card {
+    float: left;
+    width: 23%;
+    margin-right: 2%;
+    min-height: 6em;
+    border: 3px solid #aaa;
+  }
 </style>
