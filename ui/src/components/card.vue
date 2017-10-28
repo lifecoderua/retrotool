@@ -10,7 +10,7 @@
     props: ['card'],
     methods: {
       edit() {
-        this.$modal.show('hello-world', {card: this.card})
+        this.$modal.show('card-modal', {card: this.card, mode: 'edit'})
       }
     }
   }

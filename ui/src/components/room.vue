@@ -9,21 +9,18 @@
       :key="cluster.id"></cluster>
     <hr>
 
-    <modal name="hello-world" @before-open="initModal">
-      hello, world!
-
-      {{ modalData.card }}
-    </modal>
+    <card-modal></card-modal>
   </div>
 </template>
 
 <script>
   import Cluster from '@/components/cluster'
+  import CardModal from '@/components/card-modal'
   import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'room',
-    components: { Cluster },
+    components: { Cluster, CardModal },
     data() {
       return {
         modalData: {}
