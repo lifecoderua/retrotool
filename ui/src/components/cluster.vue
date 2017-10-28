@@ -4,7 +4,8 @@
     <p>{{ cluster }}</p>
 
     <div>
-      <draggable v-model="cardIds" :options="{group:'cards', sort:'false'}"  class="cluster-cards" @add="onCardMoved" :data-cluster-id="cluster.id">
+      <draggable v-model="cardIds" :options="{group:'cards', sort:'false', filter:'.card-add'}" class="cluster-cards" @add="onCardMoved" :data-cluster-id="cluster.id">
+        <card-add :cluster-id="cluster.id"></card-add>
         <card v-for="cardId in clusteredCardIds" :card="cards[cardId]" :key="cardId" :data-card-id="cardId"></card>
       </draggable>
     </div>
@@ -14,13 +15,14 @@
 
 <script>
   import Card from '@/components/card'
+  import CardAdd from '@/components/card-add'
   import draggable from 'vuedraggable'
   import { mapActions } from 'vuex'
 
   export default {
     name: 'cluster',
     props: ['cluster', 'cards', 'clusteredCardIds'],
-    components: { Card, draggable },
+    components: { Card, CardAdd, draggable },
     computed: {
       cardIds: {
         get() {
@@ -50,7 +52,7 @@
 <style scoped>
   .cluster-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 1em;
     grid-row-gap: 2em;
     min-height: 10em;

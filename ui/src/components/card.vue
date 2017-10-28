@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <h3 @click="edit">{{ card.title }}</h3>
+  <div class="card" @click="edit">
+    <h3>{{ card.title }}</h3>
     <p>{{ card }}</p>
   </div>
 </template>
@@ -20,5 +20,6 @@
   .card {
     min-height: 6em;
     border: 3px solid #aaa;
+    cursor: pointer;
   }
 </style>
