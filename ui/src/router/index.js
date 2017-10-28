@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VModal from 'vue-js-modal'
 import Index from '@/components/index'
 import Join from '@/components/join'
 import Room from '@/components/room'
 
 Vue.use(Router)
+Vue.use(VModal)
 
 export default new Router({
   routes: [

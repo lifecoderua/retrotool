@@ -8,6 +8,12 @@
       :clustered-card-ids="clusteredCardIds(cluster.id)"
       :key="cluster.id"></cluster>
     <hr>
+
+    <modal name="hello-world" @before-open="initModal">
+      hello, world!
+
+      {{ modalData.card }}
+    </modal>
   </div>
 </template>
 
@@ -18,6 +24,11 @@
   export default {
     name: 'room',
     components: { Cluster },
+    data() {
+      return {
+        modalData: {}
+      }
+    },
     mounted() {
       this.initClusters()
       this.initCards()
@@ -38,6 +49,9 @@
       ...mapActions('cluster', [
         'initClusters',
       ]),
+      initModal(evt) {
+        this.modalData = evt.params
+      }
     }
   }
 </script>
