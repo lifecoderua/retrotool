@@ -7,5 +7,11 @@ export default {
     return new Promise(function(resolve, reject) {
       resolve(resource.init())
     })
+  },
+  move(cardId, targetClusterId) {
+    return new Promise(function(resolve, reject) {
+      resolve()
+      // setTimeout(() => resolve(), 1500)
+    })
   }
 }

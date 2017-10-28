@@ -3,23 +3,60 @@
     <h3>{{ cluster.title }}</h3>
     <p>{{ cluster }}</p>
 
-    <card v-for="cardId in clusteredCardIds" :card="cards[cardId]" :key="cardId"></card>
+    <div>
+      <draggable v-model="cardIds" :options="{group:'cards', sort:'false'}"  class="cluster-cards" @add="onCardMoved" :data-cluster-id="cluster.id">
+        <card v-for="cardId in clusteredCardIds" :card="cards[cardId]" :key="cardId" :data-card-id="cardId"></card>
+      </draggable>
+    </div>
     {{ clusteredCardIds }}
   </div>
 </template>
 
 <script>
   import Card from '@/components/card'
+  import draggable from 'vuedraggable'
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'cluster',
     props: ['cluster', 'cards', 'clusteredCardIds'],
-    components: { Card },
+    components: { Card, draggable },
+    computed: {
+      cardIds: {
+        get() {
+          return this.clusteredCardIds
+        },
+        set(value) {}
+      }
+    },
+    methods: {
+      ...mapActions('card', [
+        'moveCard',
+      ]),
+      onCardMoved(evt) {
+        console.log({
+          clusterId: evt.to.dataset.clusterId,
+          cardId: evt.item.dataset.cardId
+        })
+        this.moveCard({
+          targetClusterId: evt.to.dataset.clusterId,
+          cardId: evt.item.dataset.cardId
+        })
+      }
+    }
   }
 </script>
 
 <style scoped>
-  .cluster {
-    clear: both;
+  .cluster-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 2em;
+    min-height: 10em;
+  }
+
+  .cluster draggable {
+    min-height: 10em;
   }
 </style>
